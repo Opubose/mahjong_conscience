@@ -40,12 +40,47 @@ impl TileID {
         // 72-107 - Sou
         // 108-123 - Winds (4 types x 4 copies)
         // 124-135 - Dragons (3 types x 4 copies)
-        todo!()
+        let id = self.0;
+
+        match id {
+            0..=35 => Tile::Suited {
+                suit: Suit::Man,
+                rank: (id / 4) + 1,
+            },
+            36..=71 => Tile::Suited {
+                suit: Suit::Pin,
+                rank: ((id - 36) / 4) + 1,
+            },
+            72..=107 => Tile::Suited {
+                suit: Suit::Sou,
+                rank: ((id - 72) / 4) + 1,
+            },
+            108..=123 => {
+                let wind_idx = (id - 108) / 4;
+                let wind = match wind_idx {
+                    0 => Wind::East,
+                    1 => Wind::South,
+                    2 => Wind::West,
+                    _ => Wind::North,
+                };
+                Tile::Wind(wind)
+            },
+            124..=135 => {
+                let dragon_idx = (id - 124) / 4;
+                let dragon = match dragon_idx {
+                    0 => Dragon::Red,
+                    1 => Dragon::Green,
+                    _ => Dragon::White,
+                };
+                Tile::Dragon(dragon)
+            },
+            _ => panic!("Invalid TileID"),
+        }
     }
 
     pub fn is_red_five(&self) -> bool {
         // IDs 16, 52, 88 are red fives
-        todo!()
+        matches!(self.0, 16 | 52 | 88)
     }
 }
 
