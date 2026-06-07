@@ -10,6 +10,6 @@ because [mahjong soul](https://mahjongsoul.yo-star.com/) is a popular riichi mah
 
 i hope so, with the standard 4-player ruleset at least.
 
-## surely since you're developing a mahjong engine, you must know the rules well, right?
+## since you're developing a mahjong engine, surely you must know the rules well, right?
 
 no.
