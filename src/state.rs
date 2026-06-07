@@ -1,4 +1,4 @@
-use crate::types::{TileID, Wind};
+use crate::types::{TileID, Wind, Meld};
 
 #[derive(Debug, Clone)]
 pub struct PlayerState {
@@ -22,9 +22,4 @@ pub struct GameState {
     pub honba: u8,
     pub riichi_sticks: u8,
     pub current_turn: usize,
-}
-
-#[derive(Debug, Clone)]
-pub struct Meld {
-    todo!()
 }

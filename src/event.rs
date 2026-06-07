@@ -1,5 +1,5 @@
 use serde::{Serialize, Deserialize};
-use crate::types::{TileID, Wind};
+use crate::types::{TileID, Wind, Meld};
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum GameEvent {
@@ -21,6 +21,7 @@ pub enum GameEvent {
     },
     MeldCalled {
         player_id: usize,
+        meld: Meld,
     },
     PlayerWon {
         winner_id: usize,

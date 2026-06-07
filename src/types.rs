@@ -48,3 +48,21 @@ impl TileID {
         todo!()
     }
 }
+
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+pub enum MeldType {
+    Chi,
+    Pon,
+    OpenKan,    // Kan from a discard
+    ClosedKan,  // concealed Kan drawn from the wall
+    AddedKan,   // upgrading an existing open Pon to a Kan
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct Meld {
+    pub meld_type: MeldType,
+    pub tiles: Vec<TileID>,  // the tiles that form the meld
+    pub called_tile: Option<TileID>, // the tile that was called to form the meld (None for closed Kan)
+    pub from_player: Option<usize>, // the player index from whom the tile was called (None for closed Kan)
+}
